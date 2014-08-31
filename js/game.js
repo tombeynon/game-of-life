@@ -33,10 +33,14 @@ Game.prototype.setCellNeighbours = function(){
   var game = this;
   $.each(this.cells, function(){
     this.neighbours = [];
-    for(var x=(this.x-1);x<=(this.x+1);x++){
-      if(x<1 || x>game.width) continue;
-      for(var y=(this.y-1);y<=(this.y+1);y++){
-        if(y<1 || y>game.height) continue;
+    for(var a=(this.x-1);a<=(this.x+1);a++){
+      var x = a;
+      if(x<1) x = game.width - x;
+      if(x>game.width) x = x - game.width;
+      for(var b=(this.y-1);b<=(this.y+1);b++){
+        var y = b;
+        if(y<1) y = game.height - y;
+        if(y>game.height) y = y - game.height;
         if(x == this.x && y == this.y) continue;
         this.neighbours.push(game.lookupCell(x,y));
       }
