@@ -1,6 +1,7 @@
 function Game (width, height) {
   this.width = width;
   this.height = height;
+  this.afterTick = $.Callbacks();
   
   this.initGame();
 }
@@ -56,6 +57,12 @@ Game.prototype.wasAlive = function(x,y){
   return this.lastGeneration[(((x-1)*this.height)+y)-1];
 }
 
+Game.prototype.aliveCells = function(){
+  return $.grep(this.cells, function(cell){
+    return cell.alive;
+  });
+}
+
 Game.prototype.tick = function(){
   this.generation++;
   console.log(this.generation)
@@ -65,6 +72,7 @@ Game.prototype.tick = function(){
   $.each(this.cells, function(){
     this.tick();
   });
+  this.afterTick.fire(this);
 }
 
 Game.prototype.auto = function(){
@@ -91,7 +99,7 @@ function Cell(game, x, y){
   this.wasAlive = false;
   this.neighbours = [];
   this.bornIn;
-  this.updateCallback;
+  this.afterUpdate = $.Callbacks();
 }
 
 Cell.prototype.age = function(){
@@ -116,7 +124,7 @@ Cell.prototype.die = function(){
 }
 
 Cell.prototype.updated = function(){
-  if(this.updateCallback) this.updateCallback(this);
+  this.afterUpdate.fire(this);
 }
 
 Cell.prototype.reset = function(){

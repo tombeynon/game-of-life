@@ -125,9 +125,10 @@ function CellPresenter(cell, width){
   var presenter = this;
   this.el.on("click", function(){
     presenter.cell.alive ? presenter.cell.die() : presenter.cell.live();
+    presenter.cell.game.afterTick.fire(presenter.cell.game);
   });
   
-  this.cell.updateCallback = function(cell){
+  this.cell.afterUpdate.add(function(cell){
     if(presenter.cell.alive){
       presenter.el.addClass("alive");
       presenter.applyColor();
@@ -135,7 +136,7 @@ function CellPresenter(cell, width){
       presenter.el.removeClass("alive");
       presenter.el.css("background-color", "transparent");
     }
-  }
+  });
 }
 
 CellPresenter.prototype.aliveNeighbours = function(){
