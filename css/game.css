@@ -1,0 +1,25 @@
+.grid{
+  border-left:1px solid #f0f0f0;
+  border-bottom:1px solid #f0f0f0;
+}
+.cell{
+  float:left;
+  border-top:1px solid #f0f0f0;
+  border-right:1px solid #f0f0f0;
+}
+
+.controls{
+  margin:10px 0;
+  overflow:hidden;
+}
+
+.controls a{
+  float:left;
+  margin-right:10px;
+  padding-right:10px;
+  border-right:1px solid #ccc;
+}
+
+.controls a:last-child{
+  border-right:none;
+}
