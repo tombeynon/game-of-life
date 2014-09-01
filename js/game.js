@@ -6,6 +6,22 @@ function Game (width, height) {
   this.initGame();
 }
 
+Game.prototype.getAliveCoordinates = function(){
+  var coordinates = [];
+  $.each(this.aliveCells(), function(){
+    coordinates.push([this.x, this.y]);
+  });
+  return JSON.stringify(coordinates);
+}
+
+Game.prototype.setAliveCoordinates = function(coordinates){
+  var game = this;
+  $.each(coordinates, function(){
+    var cell = game.lookupCell(this[0], this[1]);
+    cell.live();
+  });
+}
+
 Game.prototype.initGame = function(){
   this.generation = 0;
   this.initCells();
@@ -65,7 +81,6 @@ Game.prototype.aliveCells = function(){
 
 Game.prototype.tick = function(){
   this.generation++;
-  console.log(this.generation)
   $.each(this.cells, function(){
     this.saveState();
   });
@@ -120,7 +135,7 @@ Cell.prototype.live = function(){
 Cell.prototype.die = function(){
   this.alive = false;
   this.bornIn = undefined;
-  if(this.updateCallback) this.updateCallback(this);
+  this.updated();
 }
 
 Cell.prototype.updated = function(){

@@ -7,6 +7,10 @@ body{
   line-height:100%;
 }
 
+a{
+  color:#0061A5;
+}
+
 p, ul, ol{
   margin:0 0 15px;
   font-size:85%;
@@ -30,9 +34,21 @@ p, ul, ol{
   font-size:85%;
 }
 
-#details p.wiki{
+#details p.links{
   font-size:80%;
   font-style:italic;
+}
+
+#details p.links a{
+  margin-right:10px;
+  padding-right:10px;
+  border-right:1px solid #ccc;
+  display:block;
+  float:left;
+}
+
+#details p.links a:last-child{
+  border-right:none; 
 }
 
 #stats{

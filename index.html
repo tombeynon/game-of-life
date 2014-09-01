@@ -9,6 +9,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="js/game.js"></script>
 	<script src="js/presenter.js"></script>
+	<script src="js/templates.js"></script>
 	<script src="js/main.js"></script>
 </head>
 <body>
@@ -22,15 +23,14 @@
 			<p class="alives">Number alive: </p>
 		</div>
 		<div class="origin">
-			<p>The universe of the Game of Life is a two-dimensional grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:</p>
-			<ol>
-				<li>Any live cell with fewer than two live neighbours dies, representing under-population.</li>
-				<li>Any live cell with two or three live neighbours lives on to the next generation.</li>
-				<li>Any live cell with more than three live neighbours dies, representing overcrowding.</li>
-				<li>Any dead cell with exactly three live neighbours becomes a live cell, representing reproduction.</li>
-			</ol>
-			<p>The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.</p>
-			<p class="wiki"><a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia</p>
+			
+			<p class="templates">
+				<a data-template='0' href="#">Gosper glider gun</a>
+			</p>
+			<p class="links">
+				<a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia</a>
+				<a href="https://github.com/tombeynon/game-of-life">Code</a>
+			</p>
 		</div>
 	</div>
 </body>

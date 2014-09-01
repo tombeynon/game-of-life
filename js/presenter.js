@@ -29,6 +29,11 @@ GamePresenter.prototype.randomize = function(){
   });
 }
 
+GamePresenter.prototype.loadTemplate = function(template){
+  this.game.restartGame();
+  this.game.setAliveCoordinates(template);
+}
+
 GamePresenter.prototype.initCellPresenters = function(){
   this.cellPresenters = [];
   var gamePresenter = this;
